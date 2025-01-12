@@ -1,4 +1,4 @@
-package com.mycompany.proyecto.ed;
+package com.espol.proyecto.ed;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +18,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
+        stage.setScene(scene);       
         stage.show();
     }
 
