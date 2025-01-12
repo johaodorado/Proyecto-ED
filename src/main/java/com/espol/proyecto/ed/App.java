@@ -1,4 +1,4 @@
-package com.mycompany.proyecto.ed;
+package com.espol.proyecto.ed;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
