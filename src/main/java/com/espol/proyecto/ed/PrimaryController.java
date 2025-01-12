@@ -1,4 +1,4 @@
-package com.mycompany.proyecto.ed;
+package com.espol.proyecto.ed;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
