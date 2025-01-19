@@ -10,7 +10,7 @@ package logicajuego;
  */
 public abstract class Jugador {
     private String nombre;
-    private Simbolo simbolo;
+    Simbolo simbolo;
 
     public Jugador(){}
     

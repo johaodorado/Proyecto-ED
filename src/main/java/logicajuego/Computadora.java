@@ -4,71 +4,95 @@
  */
 package logicajuego;
 
+import com.espol.proyectoed.arbol.Tree;
 /**
  *
  * @author ariel
- */
+ */import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
+import javafx.util.Duration;
+
 public class Computadora extends Jugador {
 
+    // Constructor predeterminado
     public Computadora() {
         super();
     }
 
+    // Constructor con símbolo
+    public Computadora(Simbolo simbolo) {
+        super("Computadora", simbolo);
+    }
+
     @Override
     public String toString() {
-       return this.getNombre();
+        return this.getNombre();
     }
+
+    // Método principal para decidir jugadas
+    public Tablero tomarDecision(Tablero tablero, Simbolo simboloOponente) {
+        List<Integer> utilidades = new ArrayList<>();
+        List<Integer> utilidadesParciales = new ArrayList<>();
+
+        // Si el tablero tiene 8 movimientos, realiza una decisión final
+        if (tablero.size() == 8) {
+            tomarDecisionFinal(tablero);
+            return tablero;
+        }
+
+        // Crear árbol de jugadas
+        Tree<Tablero> arbolJugadas = new Tree<>(tablero);
+        pensarProximasJugadas(arbolJugadas, simbolo);
+
+        // Evaluar las utilidades de cada jugada
+        for (Tree<Tablero> hijo : arbolJugadas.getChildren()) {
+            pensarProximasJugadas(hijo, simboloOponente);
+            utilidadesParciales.clear();
+
+            for (Tree<Tablero> nieto : hijo.getChildren()) {
+                Tablero tableroHijo = nieto.getRoot();
+                int utilidad = tableroHijo.calcularUtilidad(simbolo);
+                utilidadesParciales.add(utilidad);
+            }
+
+            utilidades.add(Collections.min(utilidadesParciales)); // Minimizar utilidad del oponente
+        }
+
+        // Escoger la jugada con la mayor utilidad
+        int maxUtilidad = Collections.max(utilidades);
+        return arbolJugadas.getChildren().get(utilidades.indexOf(maxUtilidad)).getRoot();
+    }
+
+    // Generar todas las posibles jugadas desde el tablero actual
+    private void pensarProximasJugadas(Tree<Tablero> arbol, Simbolo simbolo) {
+        Tablero tableroActual = arbol.getRoot();
+
+        for (int i = 0; i < tableroActual.getTablero().length; i++) {
+            for (int j = 0; j < tableroActual.getTablero()[i].length; j++) {
+                if (tableroActual.getTablero()[i][j] == Simbolo.vacio) {
+                    Tablero nuevo = tableroActual.copiarTablero(); // Crear una copia del tablero actual
+                    nuevo.getTablero()[i][j] = simbolo; // Realizar la jugada
+                    arbol.addChildren(nuevo); // Agregar el tablero resultante al árbol
+                }
+            }
+        }
+    }
+
+    // Realiza una decisión final para completar el tablero
+    private void tomarDecisionFinal(Tablero tablero) {
+        for (int i = 0; i < tablero.getTablero().length; i++) {
+            for (int j = 0; j < tablero.getTablero()[i].length; j++) {
+               if (tablero.getTablero()[i][j].equals(Simbolo.vacio)){tablero.getTablero()[i][j] = simbolo;}
+                    return; // Realiza el primer movimiento disponible y termina
+                }
+            }
+        }
     
-    private int minimax(Tablero tablero, boolean esMaximizador, Simbolo miSimbolo) {
-        Simbolo rival = (miSimbolo == Simbolo.X) ? Simbolo.O : Simbolo.X;
 
-        // Evaluar el estado actual del tablero
-        if (esVictoria(tablero, miSimbolo)) return 10;  // Victoria para la computadora.
-        if (esVictoria(tablero, rival)) return -10;     // Victoria para el humano.
-        if (Tablero.isFull(tablero)) return 0;          // Empate.
-
-        if (esMaximizador) {
-            int mejorValor = Integer.MIN_VALUE;
-
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    if (tablero.getTablero()[i][j] == Simbolo.vacio) {
-                        Tablero copia = tablero.copiarTablero();
-                        copia.setTablero(i, j, miSimbolo); // Simular movimiento.
-
-                        int valor = minimax(copia, false, miSimbolo);
-                        mejorValor = Math.max(mejorValor, valor);
-                    }
-                }
-            }
-            return mejorValor;
-        } else {
-            int peorValor = Integer.MAX_VALUE;
-
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    if (tablero.getTablero()[i][j] == Simbolo.vacio) {
-                        Tablero copia = tablero.copiarTablero();
-                        copia.setTablero(i, j, rival); // Simular movimiento del oponente.
-
-                        int valor = minimax(copia, true, miSimbolo);
-                        peorValor = Math.min(peorValor, valor);
-                    }
-                }
-            }
-            return peorValor;
-        }
-    }
-
-    private boolean esVictoria(Tablero tablero, Simbolo simbolo) {
-        Simbolo[][] t = tablero.getTablero();
-        for (int i = 0; i < 3; i++) {
-            if (t[i][0] == simbolo && t[i][1] == simbolo && t[i][2] == simbolo) return true;
-            if (t[0][i] == simbolo && t[1][i] == simbolo && t[2][i] == simbolo) return true;
-        }
-        if (t[0][0] == simbolo && t[1][1] == simbolo && t[2][2] == simbolo) return true;
-        if (t[0][2] == simbolo && t[1][1] == simbolo && t[2][0] == simbolo) return true;
-        return false;
-    }
+    
     
 }
+
