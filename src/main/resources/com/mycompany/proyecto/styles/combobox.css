@@ -1,0 +1,13 @@
+ .combo-box {
+     -fx-background-color: #233542;
+     -fx-text-fill: white;
+     -fx-font-size: 14px;
+     -fx-font-weight: bold;
+ }
+
+ .combo-box .list-cell {
+     -fx-background-color: #233542;
+     -fx-text-fill: white;
+     -fx-font-size: 14px;
+     -fx-font-weight: bold;
+ }

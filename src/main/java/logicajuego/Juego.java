@@ -85,7 +85,7 @@ public void dtagame(Juego juego) {
     }
 
     // Recomendar una jugada usando un bot
-    public int[] recomendarJugada(Tablero tablero, Simbolo simbolo) {
+    public static int[] recomendacion(Tablero tablero, Simbolo simbolo) {
     // Crear una instancia del bot (Computadora)
     Computadora bot = new Computadora(simbolo);
 

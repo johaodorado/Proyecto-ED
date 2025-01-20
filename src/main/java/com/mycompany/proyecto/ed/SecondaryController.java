@@ -85,32 +85,38 @@ public class  SecondaryController{
         playerTwoType.setText(playerType[1]);
     }
     private void setPlayerOne() {
-        MododeJuego gameMode = game.getModoDeJuego();
-        Jugador player = gameMode.j1();
-        player.setNombre(playerOneName.getText());
-        player.setSimbolo(Simbolo.O);
-        game.setJugadorUno(player);
+    MododeJuego gameMode = game.getModoDeJuego();
+    if (gameMode == null) {
+        throw new IllegalStateException("Modo de juego no seleccionado.");
     }
-    private void setPlayerTwo() {
-        MododeJuego gameMode = game.getModoDeJuego();
-        Jugador player = gameMode.j2();
-        player.setNombre(playerTwoName.getText());
-        player.setSimbolo(Simbolo.X);
-        game.setJugadorDos(player);
+    Jugador player = gameMode.j1();
+    player.setNombre(playerOneName.getText().isEmpty() ? "Jugador 1" : playerOneName.getText());
+    player.setSimbolo(Simbolo.O);
+    game.setJugadorUno(player);
+}
+  private void setPlayerTwo() {
+    MododeJuego gameMode = game.getModoDeJuego();
+    if (gameMode == null) {
+        throw new IllegalStateException("Modo de juego no seleccionado.");
     }
-    @FXML
-    private void play() {
-        setPlayerOne();
-        setPlayerTwo();
-        game.setSimboloInicial(orders.getValue());
-        InstanciaJuego.getInstance().getGameData().dtagame(game);
-        try {
-            App.setRoot("gameplay");
-        } catch (
-                IOException e) {
-            throw new RuntimeException(e);
-        }
-    }}
+    Jugador player = gameMode.j2();
+    player.setNombre(playerTwoName.getText().isEmpty() ? "Jugador 2" : playerTwoName.getText());
+    player.setSimbolo(Simbolo.X);
+    game.setJugadorDos(player);
+}
+
+   @FXML
+private void play() {
+    setPlayerOne();
+    setPlayerTwo();
+    game.setSimboloInicial(orders.getValue());
+    InstanciaJuego.getInstance().getGameData().dtagame(game);
+    try {
+        App.setRoot("tertiary");
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    }
+}}
     
    
    

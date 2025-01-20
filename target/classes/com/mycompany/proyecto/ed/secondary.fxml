@@ -65,9 +65,6 @@
                            </font>
                         </Label>
                      </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -133,14 +130,14 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="33.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/circle.png" />
+                  <Image url="file:\C:\Users\genzo\Downloads\ximagen.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+            <ImageView fitHeight="36.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                <image>
-                  <Image url="@../img/cross.png" />
+                  <Image url="file:\C:\Users\genzo\Downloads\circle.png" />
                </image>
             </ImageView>
             <TextField fx:id="playerOneName" promptText="Nombre..." style="-fx-background-color: #233542; -fx-text-fill: white;" GridPane.rowIndex="2">
@@ -153,12 +150,12 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </TextField>
-            <Label fx:id="playerOneType" text="Humano" textFill="WHITE" GridPane.rowIndex="1">
+            <Label fx:id="playerOneType" text="Humano" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="playerTwoType" text="Pc" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="playerTwoType" text="Pc" textFill="WHITE" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

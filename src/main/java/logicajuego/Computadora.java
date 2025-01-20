@@ -5,6 +5,7 @@
 package logicajuego;
 
 import com.espol.proyectoed.arbol.Tree;
+import com.mycompany.proyecto.ed.TertiaryController;
 /**
  *
  * @author ariel
@@ -92,7 +93,28 @@ public class Computadora extends Jugador {
         }
     
 
-    
-    
+        @Override
+    public void play(Jugador opponentPlayer, TertiaryController iJuego) {
+        boolean canPlay = super.canPlay(iJuego.getTablero());
+        if (!canPlay) {
+            iJuego.checkWinners();
+            return;
+        }
+
+        iJuego.setPlayerTurn(this);
+        iJuego.clearBestPlay();
+        Tablero tablero = iJuego.getTablero();
+        Tablero newTablero = tomarDecision(tablero, opponentPlayer.getSimbolo());
+        iJuego.setMatrix(newTablero);
+        PauseTransition pause = new PauseTransition(Duration.seconds(1));
+        pause.setOnFinished(e -> {
+            Platform.runLater(iJuego::rePaint);
+            opponentPlayer.play(this, iJuego);
+        });
+        pause.play();
+    }
 }
+    
+    
+
 

@@ -10,8 +10,10 @@ logicajuego\MododeJuego.class
 logicajuego\InstanciaJuego.class
 logicajuego\Simbolo.class
 com\espol\proyectoed\arbol\Tree.class
+com\mycompany\proyecto\ed\GanadorController.class
 com\mycompany\proyecto\ed\PrimaryController.class
 logicajuego\PersonavsPersona.class
+logicajuego\Main.class
 logicajuego\Tablero.class
 com\mycompany\proyecto\ed\TertiaryController.class
 logicajuego\ComputadoravsComputadora.class

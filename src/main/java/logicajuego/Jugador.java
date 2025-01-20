@@ -4,6 +4,8 @@
  */
 package logicajuego;
 
+import com.mycompany.proyecto.ed.TertiaryController;
+
 /**
  *
  * @author ariel
@@ -37,4 +39,15 @@ public abstract class Jugador {
     
     @Override
     public abstract String toString();
+public abstract void play(Jugador opponentPlayer, TertiaryController iJuego);
+
+    public boolean canPlay(Tablero matrix){
+        boolean xWon = Juego.verificarGanador(matrix, Simbolo.X);
+        boolean oWon = Juego.verificarGanador(matrix, Simbolo.O);
+
+        boolean isFull = Tablero.isFull(matrix);
+
+        return !xWon && !oWon && !isFull;
+    }
+
 }
