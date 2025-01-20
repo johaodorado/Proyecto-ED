@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="733.0" prefWidth="763.0" spacing="20.0" style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyecto.ed.SecondaryController">
+<VBox alignment="CENTER" prefHeight="733.0" prefWidth="763.0" spacing="20.0" style="-fx-background-color: #181419;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyecto.ed.SecondaryController">
      <children>
       <HBox prefWidth="200.0">
          <children>
@@ -28,12 +28,7 @@
       </HBox>
       <HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <children>
-            <Label text="Configura tu" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="36.0" />
-               </font>
-            </Label>
-            <Label text=" Partida" textFill="#60fecf">
+            <Label prefHeight="53.0" prefWidth="212.0" text="Tres en raya" textFill="#4a073c">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
@@ -45,7 +40,7 @@
       </HBox>
       <VBox alignment="TOP_CENTER" prefHeight="197.0" prefWidth="730.0">
          <children>
-            <Label text="Modo de Juego" textFill="WHITE">
+            <Label text="Modo de Juego" textFill="#4a073c">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -59,7 +54,7 @@
                               <Image url="@../img/pcvspc.png" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="0.0" prefWidth="200.0" text="Computadora vs Computadora" textFill="WHITE">
+                        <Label prefHeight="0.0" prefWidth="200.0" text="Computadora vs Computadora" textFill="#9e0b41">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -79,15 +74,12 @@
                               <Image url="@../img/humanvspc.jpg" />
                            </image>
                         </ImageView>
-                        <Label text="Computadora vs Humano" textFill="WHITE">
+                        <Label text="Computadora vs Humano" textFill="#9e0b41">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                      </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" />
                      </padding>
@@ -99,15 +91,12 @@
                               <Image url="@../img/humanvshuman.jpg" />
                            </image>
                         </ImageView>
-                        <Label text="Humano vs Humano" textFill="WHITE">
+                        <Label text="Humano vs Humano" textFill="#9e0b41">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                      </children>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" />
                      </padding>
@@ -150,12 +139,12 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </TextField>
-            <Label fx:id="playerOneType" text="Humano" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="playerOneType" text="Humano" textFill="#9e0b41" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="playerTwoType" text="Pc" textFill="WHITE" GridPane.rowIndex="1">
+            <Label fx:id="playerTwoType" text="Pc" textFill="#9e0b41" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -164,25 +153,19 @@
       </GridPane>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
          <children>
-            <Label text="Comienza" textFill="WHITE">
+            <Label text="Comienza" textFill="#9e0b41">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
             <ComboBox fx:id="orders" prefWidth="150.0" style="-fx-background-color: #233542;" stylesheets="@../styles/combobox.css">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
             </ComboBox>
          </children>
       </HBox>
-      <Button fx:id="playButton" mnemonicParsing="false" onMouseClicked="#play" style="-fx-background-color: #233542;" text="Jugar" textFill="WHITE">
+      <Button fx:id="playButton" mnemonicParsing="false" onMouseClicked="#play" style="-fx-background-color: #233542;" text="Jugar" textFill="#9e0b41">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
          <padding>
             <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
          </padding>

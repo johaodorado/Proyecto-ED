@@ -18,12 +18,10 @@ import javafx.util.Duration;
 
 public class Computadora extends Jugador {
 
-    // Constructor predeterminado
     public Computadora() {
         super();
     }
 
-    // Constructor con símbolo
     public Computadora(Simbolo simbolo) {
         super("Computadora", simbolo);
     }
@@ -33,67 +31,75 @@ public class Computadora extends Jugador {
         return this.getNombre();
     }
 
-    // Método principal para decidir jugadas
+    // Método principal para decidir jugadas utilizando Minimax
     public Tablero tomarDecision(Tablero tablero, Simbolo simboloOponente) {
-        List<Integer> utilidades = new ArrayList<>();
-        List<Integer> utilidadesParciales = new ArrayList<>();
+        int mejorValor = Integer.MIN_VALUE;
+        Tablero mejorTablero = null;
 
-        // Si el tablero tiene 8 movimientos, realiza una decisión final
-        if (tablero.size() == 8) {
-            tomarDecisionFinal(tablero);
-            return tablero;
-        }
+        // Generar todas las posibles jugadas
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (tablero.getTablero()[i][j] == Simbolo.vacio) {
+                    Tablero copia = tablero.copiarTablero();
+                    copia.setTablero(i, j, this.simbolo);
 
-        // Crear árbol de jugadas
-        Tree<Tablero> arbolJugadas = new Tree<>(tablero);
-        pensarProximasJugadas(arbolJugadas, simbolo);
+                    // Evaluar la jugada usando Minimax
+                    int valor = minimax(copia, 0, false, this.simbolo, simboloOponente);
 
-        // Evaluar las utilidades de cada jugada
-        for (Tree<Tablero> hijo : arbolJugadas.getChildren()) {
-            pensarProximasJugadas(hijo, simboloOponente);
-            utilidadesParciales.clear();
-
-            for (Tree<Tablero> nieto : hijo.getChildren()) {
-                Tablero tableroHijo = nieto.getRoot();
-                int utilidad = tableroHijo.calcularUtilidad(simbolo);
-                utilidadesParciales.add(utilidad);
-            }
-
-            utilidades.add(Collections.min(utilidadesParciales)); // Minimizar utilidad del oponente
-        }
-
-        // Escoger la jugada con la mayor utilidad
-        int maxUtilidad = Collections.max(utilidades);
-        return arbolJugadas.getChildren().get(utilidades.indexOf(maxUtilidad)).getRoot();
-    }
-
-    // Generar todas las posibles jugadas desde el tablero actual
-    private void pensarProximasJugadas(Tree<Tablero> arbol, Simbolo simbolo) {
-        Tablero tableroActual = arbol.getRoot();
-
-        for (int i = 0; i < tableroActual.getTablero().length; i++) {
-            for (int j = 0; j < tableroActual.getTablero()[i].length; j++) {
-                if (tableroActual.getTablero()[i][j] == Simbolo.vacio) {
-                    Tablero nuevo = tableroActual.copiarTablero(); // Crear una copia del tablero actual
-                    nuevo.getTablero()[i][j] = simbolo; // Realizar la jugada
-                    arbol.addChildren(nuevo); // Agregar el tablero resultante al árbol
+                    if (valor > mejorValor) {
+                        mejorValor = valor;
+                        mejorTablero = copia;
+                    }
                 }
             }
         }
+
+        return mejorTablero;
     }
 
-    // Realiza una decisión final para completar el tablero
-    private void tomarDecisionFinal(Tablero tablero) {
-        for (int i = 0; i < tablero.getTablero().length; i++) {
-            for (int j = 0; j < tablero.getTablero()[i].length; j++) {
-               if (tablero.getTablero()[i][j].equals(Simbolo.vacio)){tablero.getTablero()[i][j] = simbolo;}
-                    return; // Realiza el primer movimiento disponible y termina
+    // Implementación del algoritmo Minimax
+    private int minimax(Tablero tablero, int profundidad, boolean esMax, Simbolo simboloActual, Simbolo simboloOponente) {
+        // Verificar si el juego termina
+        if (Juego.verificarGanador(tablero, simboloActual)) {
+            return 10 - profundidad; // Victoria del bot
+        }
+        if (Juego.verificarGanador(tablero, simboloOponente)) {
+            return profundidad - 10; // Victoria del oponente
+        }
+        if (Tablero.isFull(tablero)) {
+            return 0; // Empate
+        }
+
+        if (esMax) {
+            int mejorValor = Integer.MIN_VALUE;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (tablero.getTablero()[i][j] == Simbolo.vacio) {
+                        Tablero copia = tablero.copiarTablero();
+                        copia.setTablero(i, j, simboloActual);
+                        int valor = minimax(copia, profundidad + 1, false, simboloActual, simboloOponente);
+                        mejorValor = Math.max(mejorValor, valor);
+                    }
                 }
             }
+            return mejorValor;
+        } else {
+            int mejorValor = Integer.MAX_VALUE;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (tablero.getTablero()[i][j] == Simbolo.vacio) {
+                        Tablero copia = tablero.copiarTablero();
+                        copia.setTablero(i, j, simboloOponente);
+                        int valor = minimax(copia, profundidad + 1, true, simboloActual, simboloOponente);
+                        mejorValor = Math.min(mejorValor, valor);
+                    }
+                }
+            }
+            return mejorValor;
         }
-    
+    }
 
-        @Override
+    @Override
     public void play(Jugador opponentPlayer, TertiaryController iJuego) {
         boolean canPlay = super.canPlay(iJuego.getTablero());
         if (!canPlay) {
@@ -103,9 +109,11 @@ public class Computadora extends Jugador {
 
         iJuego.setPlayerTurn(this);
         iJuego.clearBestPlay();
+
         Tablero tablero = iJuego.getTablero();
         Tablero newTablero = tomarDecision(tablero, opponentPlayer.getSimbolo());
         iJuego.setMatrix(newTablero);
+
         PauseTransition pause = new PauseTransition(Duration.seconds(1));
         pause.setOnFinished(e -> {
             Platform.runLater(iJuego::rePaint);
@@ -114,7 +122,3 @@ public class Computadora extends Jugador {
         pause.play();
     }
 }
-    
-    
-
-

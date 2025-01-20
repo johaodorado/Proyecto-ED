@@ -225,7 +225,7 @@ public class TertiaryController {
             Jugador winner = oWon ? game.getJugadorUno(): game.getJugadorDos();
 
             try {
-                FXMLLoader loader = new FXMLLoader(App.class.getResource("view/ganador.fxml"));
+                FXMLLoader loader = new FXMLLoader(App.class.getResource("ganador.fxml"));
                 Parent root = loader.load();
                 GanadorController winnerController = loader.getController();
 
@@ -246,7 +246,7 @@ public class TertiaryController {
             this.returnHome();
         } else {
             try {
-                FXMLLoader loader = new FXMLLoader(App.class.getResource("view/end.fxml"));
+                FXMLLoader loader = new FXMLLoader(App.class.getResource("empate.fxml"));
                 Parent root = loader.load();
                 Stage stage = new Stage();
 
