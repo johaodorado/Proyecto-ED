@@ -80,4 +80,5 @@
             </plugin>
         </plugins>
     </build>
+    <name>ED_P1_Grupo10</name>
 </project>
