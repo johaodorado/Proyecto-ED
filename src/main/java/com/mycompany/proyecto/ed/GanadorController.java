@@ -4,12 +4,8 @@
  */
 package com.mycompany.proyecto.ed;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -21,36 +17,33 @@ import logicajuego.Simbolo;
  *
  * @author genzo
  */
-public class GanadorController {
+    public class GanadorController {
 
+        
 
+        @FXML
+        private ImageView icon;
 
-    @FXML
-    private Label playerName;
+        @FXML
+        private Button returnButton;
 
-    @FXML
-    private ImageView icon;
+        public void initData(Jugador winner) {
+            //playerName.setText(winner.getNombre());
+            Simbolo symbol = winner.getSimbolo();
+            setSymbol(symbol);
+        }
 
-    @FXML
-    private Button returnButton;
+        @FXML
+        public void handleReturn() {
+            Stage stage = (Stage) returnButton.getScene().getWindow();
+            stage.close();
+        }
 
-    public void initData(Jugador winner) {
-        playerName.setText(winner.getNombre());
-        Simbolo symbol = winner.getSimbolo();
-        setSymbol(symbol);
-    }
-
-    @FXML
-    public void handleReturn() {
-        Stage stage = (Stage) returnButton.getScene().getWindow();
-        stage.close();
-    }
-
-    private void setSymbol(Simbolo symbol) {
-        if (symbol.equals(Simbolo.X)) {
-            icon.setImage(new Image("file:src/main/resources/imagenes/ximagen.png"));
-        } else {
-            icon.setImage(new Image("file:src/main/resources/imagenes/circle.png"));
+        private void setSymbol(Simbolo symbol) {
+            if (symbol.equals(Simbolo.X)) {
+                icon.setImage(new Image("file:src/main/resources/imagenes/ximagen.png"));
+            } else {
+                icon.setImage(new Image("file:src/main/resources/imagenes/circle.png"));
+            }
         }
     }
-}

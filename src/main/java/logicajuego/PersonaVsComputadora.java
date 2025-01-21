@@ -12,7 +12,7 @@ public class PersonaVsComputadora extends MododeJuego{
 
     @Override
     public String toString() {
-        return "Humano vs Computadora";
+        return "persona vs Computadora";
     }
 
     @Override

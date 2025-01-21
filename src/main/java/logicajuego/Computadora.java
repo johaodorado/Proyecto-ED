@@ -4,14 +4,8 @@
  */
 package logicajuego;
 
-import com.espol.proyectoed.arbol.Tree;
 import com.mycompany.proyecto.ed.TertiaryController;
-/**
- *
- * @author ariel
- */import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.util.Duration;

@@ -100,28 +100,7 @@ public class TertiaryController {
         setImage(row, col, "file:src/main/resources/imagenes/circle.png");
     }
 
-    public void setSymbolOnHover(Simbolo symbol) {
-        String greyCross = "file:src/main/resources/com/espol/tictactoe/img/greycross.png";
-        String greyCircle = "file:src/main/resources/com/espol/tictactoe/img/greycircle.png";
 
-        String imgPath = symbol.equals(Simbolo.X) ? greyCross : greyCircle;
-
-        for (Node node: board.getChildren()) {
-            VBox cell = (VBox) node;
-
-            if (!cell.isDisabled()) {
-                int rowIndex = GridPane.getRowIndex(node) == null ? 0 : GridPane.getRowIndex(node);
-                int colIndex = GridPane.getColumnIndex(node) == null ? 0 : GridPane.getColumnIndex(node);
-
-                cell.setOnMouseEntered(e -> {
-                    setImage(rowIndex, colIndex, imgPath);
-                });
-                cell.setOnMouseExited(e -> {
-                    clearImage(rowIndex, colIndex);
-                });
-            }
-        }
-    }
 
     private void setImage(int row, int col, String imgPath) {
         VBox cell = getCell(row, col);

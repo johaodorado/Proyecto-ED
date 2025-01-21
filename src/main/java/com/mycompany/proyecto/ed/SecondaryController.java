@@ -106,7 +106,7 @@ public class  SecondaryController{
 }
 
    @FXML
-private void play() {
+    private void play() {
     setPlayerOne();
     setPlayerTwo();
     game.setSimboloInicial(orders.getValue());

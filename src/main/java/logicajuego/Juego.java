@@ -110,16 +110,7 @@ public void dtagame(Juego juego) {
     // Reiniciar el juego
  
 
-    @Override
-    public String toString() {
-        return "Game{" +
-               "modoDeJuego=" + modoDeJuego +
-               ", jugadorUno=" + jugadorUno +
-               ", jugadorDos=" + jugadorDos +
-               ", simboloInicial=" + simboloInicial +
-               ", tablero=" + tablero +
-               '}';
-    }
+
 }
  
 

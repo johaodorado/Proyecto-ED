@@ -51,7 +51,7 @@
                      <children>
                         <ImageView fitHeight="67.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pcvspc.png" />
+                              <Image url="file:\C:\Users\genzo\Downloads\pcvspc.png" />
                            </image>
                         </ImageView>
                         <Label prefHeight="0.0" prefWidth="200.0" text="Computadora vs Computadora" textFill="#9e0b41">
@@ -71,7 +71,7 @@
                      <children>
                         <ImageView fitHeight="90.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/humanvspc.jpg" />
+                              <Image url="file:\C:\Users\genzo\Downloads\pcvshum.png" />
                            </image>
                         </ImageView>
                         <Label text="Computadora vs Humano" textFill="#9e0b41">
@@ -88,7 +88,7 @@
                      <children>
                         <ImageView fitHeight="106.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/humanvshuman.jpg" />
+                              <Image url="file:\C:\Users\genzo\Downloads\humvshum.png" />
                            </image>
                         </ImageView>
                         <Label text="Humano vs Humano" textFill="#9e0b41">

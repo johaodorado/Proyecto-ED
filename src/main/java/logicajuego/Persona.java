@@ -31,7 +31,7 @@ public class Persona extends Jugador {
         }
 
         GridPane board = iJuego.getBoard();
-        iJuego.setSymbolOnHover(this.simbolo);
+        
         iJuego.setPlayerTurn(this);
         iJuego.clearBestPlay();
 
