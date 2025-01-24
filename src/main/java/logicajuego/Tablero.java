@@ -28,33 +28,7 @@ public class Tablero {
         tablero[i][j] = simbolo;
     }
     
-    public int calcularUtilidad(Simbolo jugador){
-        Simbolo rival= (jugador==Simbolo.X) ? Simbolo.O : Simbolo.X;
-        int jugadasDispJugador=contarPosibilidadesVictoria(tablero,rival);
-        int jugadasDispRival=contarPosibilidadesVictoria(tablero,rival);;
-        return jugadasDispJugador-jugadasDispRival;
-    }
     
-    private static int contarPosibilidadesVictoria(Simbolo[][]tablero,Simbolo rival){
-        int formasdeGanar=0;
-        for(int i=0;i<3;i++){
-            if(tablero[i][0]!=rival && tablero[i][1]!=rival && tablero[i][2]!=rival){
-                formasdeGanar++;
-            }
-        }
-        for(int j=0;j<3;j++){
-            if(tablero[0][j]!=rival && tablero[1][j]!=rival && tablero[2][j]!=rival){
-                formasdeGanar++;
-            }
-        }
-        if(tablero[0][0]!=rival && tablero[1][1]!=rival && tablero[2][2]!=rival){
-            formasdeGanar++;
-        }
-        if(tablero[0][2]!=rival && tablero[1][1]!=rival && tablero[2][0]!=rival){
-           formasdeGanar++; 
-        }
-        return formasdeGanar;
-    }
     
     public Tablero copiarTablero(){
         Tablero tbl=new Tablero();

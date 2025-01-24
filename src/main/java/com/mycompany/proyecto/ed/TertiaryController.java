@@ -193,52 +193,54 @@ public class TertiaryController {
         startingPlayer.play(secondPlayer, this);
     }
 
-    public void checkWinners() {
-        boolean xWon = Juego.verificarGanador(this.tablero, Simbolo.X);
-        boolean oWon = Juego.verificarGanador(this.tablero, Simbolo.O);
+   public void checkWinners() {
+    boolean xWon = Juego.verificarGanador(this.tablero, Simbolo.X);
+    boolean oWon = Juego.verificarGanador(this.tablero, Simbolo.O);
 
-        if (xWon || oWon) {
-            Jugador winner = oWon ? game.getJugadorUno(): game.getJugadorDos();
+    if (xWon || oWon) {
+        Jugador winner = oWon ? game.getJugadorDos() : game.getJugadorUno();
 
-            try {
-                FXMLLoader loader = new FXMLLoader(App.class.getResource("ganador.fxml"));
-                Parent root = loader.load();
-                GanadorController winnerController = loader.getController();
+        // Actualizar los puntos del ganador
+        game.actualizarPuntos(oWon ? "JugadorDos" : "JugadorUno");
 
-                winnerController.initData(winner);
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("ganador.fxml"));
+            Parent root = loader.load();
+            GanadorController winnerController = loader.getController();
 
-                Stage stage = new Stage();
+            // Pasar información del ganador y puntos actualizados
+            winnerController.initData(winner, game.getPuntosJugadorUno(), game.getPuntosJugadorDos());
 
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setTitle("Congratulations!");
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Congratulations!");
 
-                stage.setScene(new Scene(root));
-                stage.show();
-            } catch (
-                    IOException e) {
-                throw new RuntimeException(e);
-            }
-            this.returnHome();
-        } else {
-            try {
-                FXMLLoader loader = new FXMLLoader(App.class.getResource("empate.fxml"));
-                Parent root = loader.load();
-                Stage stage = new Stage();
-
-                stage.initStyle(StageStyle.UNDECORATED);
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setTitle("Game Over");
-
-                stage.setScene(new Scene(root));
-                stage.show();
-            } catch (
-                    IOException e) {
-                throw new RuntimeException(e);
-            }
-            this.returnHome();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        this.returnHome();
+    } else {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("empate.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Game Over");
+
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        this.returnHome();
     }
+}
+
 
     public void setPlayerTurn(Jugador p) {
         this.turno = p;

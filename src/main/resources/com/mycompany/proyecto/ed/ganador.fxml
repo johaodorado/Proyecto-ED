@@ -13,7 +13,7 @@
    <children>
       <HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <children>
-            <Label text="Gano el " textFill="#f0971c">
+            <Label fx:id="winnerLabel" text="¡Ganador!" textFill="#f0971c">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
@@ -28,6 +28,16 @@
             <Image url="file:/C:/Users/genzo/Downloads/circle.png" />
          </image>
       </ImageView>
+      <Label fx:id="playerOnePoints" text="Jugador 1: 0 puntos" textFill="#ffffff">
+         <font>
+            <Font name="System" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="playerTwoPoints" text="Jugador 2: 0 puntos" textFill="#ffffff">
+         <font>
+            <Font name="System" size="24.0" />
+         </font>
+      </Label>
       <Button fx:id="returnButton" mnemonicParsing="false" onMouseClicked="#handleReturn" style="-fx-background-color: #4a073c; -fx-background-radius: 10;" text="Regresar" textFill="#5ffccc">
          <font>
             <Font name="System Bold" size="14.0" />
