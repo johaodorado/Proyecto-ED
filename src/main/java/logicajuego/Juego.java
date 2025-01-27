@@ -14,7 +14,6 @@ public class Juego {
     private Jugador jugadorDos;      // Segundo jugador
     private Simbolo simboloInicial; // Símbolo que comienza el juego
     private Tree<Tablero> tablero;        // Representa el tablero del juego
-    private Scoreboard scoreboard;
 // Nuevos atributos para el contador de puntos
     private int puntosJugadorUno;
     private int puntosJugadorDos;
@@ -25,8 +24,7 @@ public class Juego {
         this.jugadorDos = null;
         this.simboloInicial = null;
         this.tablero = new Tree<>(new Tablero());
-        this.scoreboard = new Scoreboard(); // Inicializa el marcador
-     this.puntosJugadorUno = 0; // Inicializar contador
+        this.puntosJugadorUno = 0; // Inicializar contador
         this.puntosJugadorDos = 0; // Inicializar contador
     
     }
@@ -113,12 +111,20 @@ public void dtagame(Juego juego) {
             }
         }
     }return posicion;}
-  public void actualizarPuntos(String ganador) {
+    
+    public void actualizarPuntos(String ganador) {
         if (ganador.equals("JugadorUno")) {
-            puntosJugadorUno++;
+            puntosJugadorUno+=2;
         } else if (ganador.equals("JugadorDos")) {
-            puntosJugadorDos++;
-        }
+            puntosJugadorDos+=2;
+        } else if (ganador.equals("Empate")) {
+        puntosJugadorUno ++;
+        puntosJugadorDos ++;
+        }    
+    }
+    
+    public void manejarEmpate() {
+        actualizarPuntos("Empate");
     }
 
     // Obtener los puntos del jugador uno
@@ -131,8 +137,6 @@ public void dtagame(Juego juego) {
         return puntosJugadorDos;
     }
  
-
-
 }
  
 

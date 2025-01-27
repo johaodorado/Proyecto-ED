@@ -61,7 +61,7 @@ import logicajuego.Simbolo;
         }
 
         private void setSymbol(Simbolo symbol) {
-            if (symbol.equals(Simbolo.X)) {
+            if (!symbol.equals(Simbolo.X)) {
                 icon.setImage(new Image("file:src/main/resources/imagenes/ximagen.png"));
             } else {
                 icon.setImage(new Image("file:src/main/resources/imagenes/circle.png"));

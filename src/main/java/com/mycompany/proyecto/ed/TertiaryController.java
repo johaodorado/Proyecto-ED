@@ -223,11 +223,14 @@ public class TertiaryController {
         }
         this.returnHome();
     } else {
+        game.actualizarPuntos("Empate");
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("empate.fxml"));
             Parent root = loader.load();
+            EmpateController empate=loader.getController();
+            //Pasar información del empate y actualizar puntajes
+            empate.initData(game.getPuntosJugadorUno(), game.getPuntosJugadorDos());
             Stage stage = new Stage();
-
             stage.initStyle(StageStyle.UNDECORATED);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Game Over");

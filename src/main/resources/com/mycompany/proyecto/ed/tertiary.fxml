@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #181419;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyecto.ed.TertiaryController">
+<VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="1024.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyecto.ed.TertiaryController">
    <children>
       <HBox prefWidth="200.0">
          <children>
             <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#returnHome" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/genzo/Downloads/ximagen.png" />
+                  <Image url="file:src\main\resources\imagenes\ximagen.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -29,7 +29,7 @@
       </HBox>
       <HBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <children>
-            <Label text="Tres en raya" textFill="#60fecf">
+            <Label text="TRES EN RAYA" textFill="#000000">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -59,7 +59,7 @@
                            <children>
                               <ImageView fitHeight="110.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="file:/C:/Users/genzo/Downloads/circle.png" />
+                                    <Image url="file:src\main\resources\imagenes\circle.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -71,7 +71,7 @@
                            <children>
                               <ImageView fitHeight="110.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="file:/C:/Users/genzo/Downloads/circle.png" />
+                                    <Image url="file:src\main\resources\imagenes\circle.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -83,7 +83,7 @@
                            <children>
                               <ImageView fitHeight="110.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="file:/C:/Users/genzo/Downloads/circle.png" />
+                                    <Image url="file:src\main\resources\imagenes\circle.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -95,7 +95,7 @@
                            <children>
                               <ImageView fitHeight="111.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="file:/C:/Users/genzo/Downloads/circle.png" />
+                                    <Image url="file:src\main\resources\imagenes\circle.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -107,7 +107,7 @@
                            <children>
                               <ImageView fitHeight="109.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="file:/C:/Users/genzo/Downloads/circle.png" />
+                                    <Image url="file:src\main\resources\imagenes\circle.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -119,7 +119,7 @@
                            <children>
                               <ImageView fitHeight="109.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="file:/C:/Users/genzo/Downloads/ximagen.png" />
+                                    <Image url="file:\src\main\resources\imagenes\ximagen.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -131,7 +131,7 @@
                            <children>
                               <ImageView fitHeight="142.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="file:/C:/Users/genzo/Downloads/circle.png" />
+                                    <Image url="file:src\main\resources\imagenes\circle.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -155,7 +155,7 @@
                            <children>
                               <ImageView fitHeight="110.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="file:/C:/Users/genzo/Downloads/circle.png" />
+                                    <Image url="file:src\main\resources\imagenes\circle.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -205,12 +205,12 @@
                            <children>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="file:/C:/Users/genzo/Downloads/ximagen.png" />
+                                    <Image url="file:src\main\resources\imagenes\ximagen.png" />
                                  </image>
                               </ImageView>
                               <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                                  <image>
-                                    <Image url="file:/C:/Users/genzo/Downloads/circle.png" />
+                                    <Image url="file:src\main\resources\imagenes\circle.png" />
                                  </image>
                               </ImageView>
                               <Label fx:id="playerOne" text="Jugador 1" textFill="#0e1686" GridPane.columnIndex="1">
@@ -248,7 +248,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Label fx:id="bestPlay" text="Se recomienda colocar en la posicion x, y" textAlignment="CENTER" textFill="#970d0d" wrapText="true">
+                        <Label fx:id="bestPlay" text="Se recomienda colocar en la posición x, y" textAlignment="CENTER" textFill="#970d0d" wrapText="true">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
